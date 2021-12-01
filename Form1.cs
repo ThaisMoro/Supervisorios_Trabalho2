@@ -14,10 +14,11 @@ namespace Sistemas_Supervisorios___Trabalho_2
 {
     public partial class Form1 : Form
     {
-        int andarAtual = 1;
+        static int andarAtual = 1;
         static List<String> filaAndaresChamados = new List<String>();     
         static CancellationTokenSource src = new CancellationTokenSource();
         CancellationToken ct = src.Token;
+        bool modoAutomatico = false;
 
         public Form1()
         {                
@@ -128,7 +129,53 @@ namespace Sistemas_Supervisorios___Trabalho_2
             }
         }
 
+        private void ChangeControl(object sender, EventArgs e)
+        {
+            var txtControl = (sender as CheckBox).Text;
 
+            if (txtControl == "Automático")
+            {
+                if (chc_Automatico.Checked)
+                    chc_Manual.Checked = false;
+                else
+                {
+                    chc_Manual.Checked = true;
+                    ControlExternalNavegationPanel(true);
+                    filaAndaresChamados.RemoveRange(1, filaAndaresChamados.Count() - 1);
+                    modoAutomatico = false;
+                }
+            }
+            else if (txtControl == "Manual")
+            {
+                if (chc_Manual.Checked)
+                    chc_Automatico.Checked = false;
+                else
+                {
+                    chc_Automatico.Checked = true;
+                    modoAutomatico = true;
+                    ControlExternalNavegationPanel(false);
+                    Task t = Task.Run(() => AutomaticControlAsync());
+                }
+            }
+        }
+
+        public async void AutomaticControlAsync()
+        {
+            Random rnd = new Random();
+
+            while (modoAutomatico)
+            {
+                int rndAndar = rnd.Next(1, 5);
+
+                if (rndAndar == andarAtual)
+                    continue;
+
+                filaAndaresChamados.Add("Automaticamente;" + rndAndar.ToString());
+
+                await Task.Delay(10000);
+            }
+
+        }
 
 
     }

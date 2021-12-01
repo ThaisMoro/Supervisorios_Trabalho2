@@ -127,6 +127,7 @@ namespace Sistemas_Supervisorios___Trabalho_2
             this.chc_Manual.TabIndex = 12;
             this.chc_Manual.Text = "Manual";
             this.chc_Manual.UseVisualStyleBackColor = false;
+            this.chc_Manual.CheckedChanged += new System.EventHandler(this.ChangeControl);
             // 
             // chc_Automatico
             // 
@@ -138,6 +139,7 @@ namespace Sistemas_Supervisorios___Trabalho_2
             this.chc_Automatico.TabIndex = 13;
             this.chc_Automatico.Text = "Automático";
             this.chc_Automatico.UseVisualStyleBackColor = false;
+            this.chc_Automatico.CheckedChanged += new System.EventHandler(this.ChangeControl);
             // 
             // btn_Int_Andar1
             // 
