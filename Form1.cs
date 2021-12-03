@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,8 @@ namespace Sistemas_Supervisorios___Trabalho_2
     public partial class Form1 : Form
     {
         static int andarAtual = 1;
-        static List<String> filaAndaresChamados = new List<String>();     
-        static CancellationTokenSource src = new CancellationTokenSource();
-        CancellationToken ct = src.Token;
+        static List<String> filaAndaresChamados = new List<String>();
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
         bool modoAutomatico = false;
 
         public Form1()
@@ -32,7 +32,9 @@ namespace Sistemas_Supervisorios___Trabalho_2
             var andar = (sender as Button).Text;
 
             var local = ((sender as Button).Name).Contains("Int")?"Internamente":"Externamente";
-            
+
+            logger(local, $"{andar} chamado {local}");
+
             switch (andar)
             {
                 case "1º Andar":
@@ -62,6 +64,10 @@ namespace Sistemas_Supervisorios___Trabalho_2
                     var local = filaAndaresChamados.First().Split(';')[0];
                     var nAndar = int.Parse(filaAndaresChamados.First().Split(';')[1]);
 
+                    Invoke(new Action(() => {
+                        logger(local,$"Indo para o andar numero {nAndar}");
+                    }));
+
                     if (nAndar > andarAtual)
                     {                        
                         Invoke(new Action(() => { lbl_EM.BackColor = Color.Red; }));
@@ -88,6 +94,7 @@ namespace Sistemas_Supervisorios___Trabalho_2
                         }
                     }
 
+                    Invoke(new Action(() => { logger(local,$"Andar numero {nAndar} alcancado"); }));
                     filaAndaresChamados.RemoveAt(0);                 
                     Invoke(new Action(() => { lbl_EM.BackColor = Color.White; }));
                     Invoke(new Action(() => { lbl_Status.Text = "Parado"; }));
@@ -95,6 +102,23 @@ namespace Sistemas_Supervisorios___Trabalho_2
 
                 }
             }
+        }
+
+        public void logger(String local,String mensagem)
+        {
+
+            if (local == "Internamente")
+            {
+                log.Info(mensagem);
+
+                var logFile = File.ReadAllLines(@"log.log");
+
+                list_Logger.Items.Clear();
+                list_Logger.Items.AddRange(logFile);
+                int visibleItems = list_Logger.ClientSize.Height / list_Logger.ItemHeight;
+                list_Logger.TopIndex = Math.Max(list_Logger.Items.Count - visibleItems + 1, 0);
+            }
+
         }
 
         public async Task OpenAndCloseElavatorPort()
