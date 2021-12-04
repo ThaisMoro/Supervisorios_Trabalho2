@@ -44,6 +44,7 @@ namespace Sistemas_Supervisorios___Trabalho_2
             this.btn_Int_Andar4 = new System.Windows.Forms.Button();
             this.btn_Int_Andar5 = new System.Windows.Forms.Button();
             this.lbl_Internal_Andar_Atual = new System.Windows.Forms.Label();
+            this.list_Logger = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btn_Ext_Andar1
@@ -201,12 +202,21 @@ namespace Sistemas_Supervisorios___Trabalho_2
             this.lbl_Internal_Andar_Atual.TabIndex = 19;
             this.lbl_Internal_Andar_Atual.Text = "---";
             // 
+            // list_Logger
+            // 
+            this.list_Logger.FormattingEnabled = true;
+            this.list_Logger.Location = new System.Drawing.Point(111, 301);
+            this.list_Logger.Name = "list_Logger";
+            this.list_Logger.Size = new System.Drawing.Size(519, 95);
+            this.list_Logger.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.list_Logger);
             this.Controls.Add(this.lbl_Internal_Andar_Atual);
             this.Controls.Add(this.btn_Int_Andar5);
             this.Controls.Add(this.btn_Int_Andar4);
@@ -246,6 +256,7 @@ namespace Sistemas_Supervisorios___Trabalho_2
         private System.Windows.Forms.Button btn_Int_Andar4;
         private System.Windows.Forms.Button btn_Int_Andar5;
         private System.Windows.Forms.Label lbl_Internal_Andar_Atual;
+        private System.Windows.Forms.ListBox list_Logger;
     }
 }
 
