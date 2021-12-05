@@ -241,22 +241,22 @@ namespace Sistemas_Supervisorios___Trabalho_2
 
         #endregion
 
-        private System.Windows.Forms.Button btn_Ext_Andar3;
-        private System.Windows.Forms.Button btn_Ext_Andar4;
-        private System.Windows.Forms.Button btn_Ext_Andar1;
-        private System.Windows.Forms.Button btn_Ext_Andar2;
-        private System.Windows.Forms.Button btn_Ext_Andar5;
-        private System.Windows.Forms.Label lbl_Status;
-        private System.Windows.Forms.Label lbl_EM;
-        private System.Windows.Forms.CheckBox chc_Manual;
-        private System.Windows.Forms.CheckBox chc_Automatico;
-        private System.Windows.Forms.Button btn_Int_Andar1;
-        private System.Windows.Forms.Button btn_Int_Andar2;
-        private System.Windows.Forms.Button btn_Int_Andar3;
-        private System.Windows.Forms.Button btn_Int_Andar4;
-        private System.Windows.Forms.Button btn_Int_Andar5;
-        private System.Windows.Forms.Label lbl_Internal_Andar_Atual;
-        private System.Windows.Forms.ListBox list_Logger;
+        public System.Windows.Forms.Button btn_Ext_Andar3;
+        public System.Windows.Forms.Button btn_Ext_Andar4;
+        public System.Windows.Forms.Button btn_Ext_Andar1;
+        public System.Windows.Forms.Button btn_Ext_Andar2;
+        public System.Windows.Forms.Button btn_Ext_Andar5;
+        public System.Windows.Forms.Label lbl_Status;
+        public System.Windows.Forms.Label lbl_EM;
+        public System.Windows.Forms.CheckBox chc_Manual;
+        public System.Windows.Forms.CheckBox chc_Automatico;
+        public System.Windows.Forms.Button btn_Int_Andar1;
+        public System.Windows.Forms.Button btn_Int_Andar2;
+        public System.Windows.Forms.Button btn_Int_Andar3;
+        public System.Windows.Forms.Button btn_Int_Andar4;
+        public System.Windows.Forms.Button btn_Int_Andar5;
+        public System.Windows.Forms.Label lbl_Internal_Andar_Atual;
+        public System.Windows.Forms.ListBox list_Logger;
     }
 }
 
